@@ -1,5 +1,7 @@
-export const PRIVATE_KEY = "";
-export const PUBLIC_KEY = "CVdndsAGyNj8BvLhtrQBLMtrwEgy53ACXFQmQMfH2MFQ";
+export const PRIVATE_KEY = process.env.PRIVATE_KEY as string;
+export const PUBLIC_KEY = process.env.PUBLIC_KEY as string;
 
-export const TOKEN_MINT_ADDRESS =
-  "4EvpeWRye9YNqsuPkAzj8xwzB4ovnLetK9A3W1j5UHYd";
+export const TOKEN_MINT_ADDRESS = process.env.TOKEN_MINT_ADDRESS as string;
+export const TOKEN_MINT_DECIMALS = parseInt(
+  process.env.TOKEN_MINT_DECIMALS || "9"
+) as number;
