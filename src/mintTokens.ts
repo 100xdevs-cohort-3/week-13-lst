@@ -8,12 +8,13 @@ import {
 import { PRIVATE_KEY, TOKEN_MINT_ADDRESS } from "./address";
 import * as TokenProgram from "@solana/spl-token";
 
+import bs58 from "bs58";
 export const mintTokens = async (
   fromAddress: string,
   toAddress: string,
   amount: number
 ) => {
-  const secret = new Uint8Array(PRIVATE_KEY as any);
+  const secret = new Uint8Array(bs58.decode(PRIVATE_KEY));
   const wallet = Keypair.fromSecretKey(secret);
   const mint = new PublicKey(TOKEN_MINT_ADDRESS);
 
