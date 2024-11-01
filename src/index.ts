@@ -11,10 +11,13 @@ app.post('/helius', async(req, res) => {
     const amount = req.body.amount;
     const type = "received_native_sol";
 
+    console.log(`Received transaction from ${fromAddress} to ${toAddress} of ${amount} SOL`);
+
     if (type === "received_native_sol") {
-        await mintTokens(fromAddress, toAddress, amount);
+        await mintTokens(fromAddress, amount);
     } else {
         // What could go wrong here?
+        //any other event could be sent to this endpoint and you'll still burn tokens and send sol.
         await burnTokens(fromAddress, toAddress, amount);
         await sendNativeTokens(fromAddress, toAddress, amount);
     }
