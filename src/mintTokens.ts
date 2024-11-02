@@ -94,6 +94,11 @@ export const sendNativeTokens = async (toAddress: string, amount: number) => {
   return signature;
 };
 
+let _connection: Connection | null = null;
+
 export function getConnection(): Connection {
-  return new Connection("https://api.devnet.solana.com");
+  if (!_connection) {
+    _connection = new Connection("https://api.devnet.solana.com");
+  }
+  return _connection;
 }
