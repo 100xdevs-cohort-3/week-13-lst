@@ -98,7 +98,7 @@ let _connection: Connection | null = null;
 
 export function getConnection(): Connection {
   if (!_connection) {
-    _connection = new Connection("https://api.devnet.solana.com");
+    _connection = new Connection(process.env.RPC_URL as string);
   }
   return _connection;
 }
